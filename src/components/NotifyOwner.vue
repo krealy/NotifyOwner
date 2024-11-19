@@ -2,11 +2,8 @@
   <div class="container">
     <h1>通知车主挪车</h1>
     <p>如需通知车主，请点击以下按钮</p>
-    <input
-      type="text"
-      placeholder="请输入您的电话号码"
-      v-model="notifierPhone"
-    />
+    <InputModule v-model="inputValue" placeholder="请输入内容" />
+
     <button class="notify-btn" @click="notifyOwner">通知车主挪车</button>
     <!-- 只有在通知成功后才显示拨打电话按钮 -->
     <button
@@ -22,8 +19,10 @@
 
 <script lang="ts" setup>
 import { ref } from "vue";
+import InputModule from "./InputModule.vue";
 
 // 响应式变量
+const inputValue = ref("");
 const notifierPhone = ref(""); // 通知人电话号码
 const isNotifySuccessful = ref(false); // 是否成功通知车主
 const phone = "18976607056"; // 车主的手机号
@@ -156,4 +155,18 @@ const callOwner = () => {
     .cll-btn:hover {
       background: #138496;
     }
+    /* .input {
+    width: 100%;  
+    max-width: 100%;  
+    padding: 13px 14px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Microsoft soft";
+  }
+  .input:focus {
+    border-color: #66afe9;
+    outline: none;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+  } */
     </style>
